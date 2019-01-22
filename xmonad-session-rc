@@ -17,7 +17,7 @@ setxkbmap -option "ctrl:nocaps" &
 xcompmgr -n &
 
 # Set a wallpaper
-feh --bg-fill ~/.wallpaper.jpg &
+feh --bg-fill /usr/share/backgrounds/hancza.jpg &
 
 # Start the system tray
 stalonetray -c ~/.xmonad/stalonetrayrc-single &
@@ -25,9 +25,6 @@ stalonetray -c ~/.xmonad/stalonetrayrc-single &
 # Start two terminals
 gnome-terminal &
 gnome-terminal &
-
-# Start a browser
-google-chrome &
 
 # Start screensaver
 killall gnome-screensaver &
