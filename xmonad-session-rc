@@ -22,10 +22,6 @@ feh --bg-fill /usr/share/backgrounds/hancza.jpg &
 # Start the system tray
 stalonetray -c ~/.xmonad/stalonetrayrc-single &
 
-# Start two terminals
-gnome-terminal &
-gnome-terminal &
-
 # Start screensaver
 killall gnome-screensaver &
 xscreensaver -no-splash &

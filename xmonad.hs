@@ -26,7 +26,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/gnome-terminal"
+myTerminal = "/usr/bin/mate-terminal"
 
 -- The command to lock the screen or show the screensaver.
 myScreensaver = "/usr/bin/xscreensaver-command -l"
@@ -142,7 +142,12 @@ myModMask = mod1Mask
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
   -- Custom key bindings
-  --
+  -- Take a screenshot of a selected part of screen using Mod+ctrl+screenshot
+  [ ((modMask .|. controlMask, xK_Print ),
+     spawn "scrot /tmp/scrot.png -s && xclip /tmp/scrot.png")
+
+  ]
+  ++
 
   -- Start a terminal.  Terminal to start is specified by myTerminal variable.
   [ ((modMask .|. shiftMask, xK_Return),
