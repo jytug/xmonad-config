@@ -146,6 +146,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask .|. controlMask, xK_Print ),
      spawn "scrot /tmp/scrot.png -s && xclip /tmp/scrot.png")
 
+  -- Keyboard brightness
+  , ((0, xF86XK_KbdBrightnessUp),
+    spawn "backlight up")
+
+  , ((0, xF86XK_KbdBrightnessDown),
+    spawn "backlight down")
+
   ]
   ++
 
