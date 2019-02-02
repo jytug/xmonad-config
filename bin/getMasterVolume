@@ -1,6 +1,11 @@
 #!/bin/sh
 
 volume=$(amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MM" } else { print $2/10 }}' | head -n 1)
+if amixer -c 0 get Master | grep -q off; then
+    muted="off"
+else
+    muted="on"
+fi
 
 python -c "
 from __future__ import division, print_function
@@ -9,7 +14,8 @@ BAR_WIDTH = 10
 volume = $volume
 volume_width = min(int(volume), BAR_WIDTH)
 missing_volume_width = BAR_WIDTH - volume_width
-print('Vol: {}%  [{}{}]'.format(int(volume * 10),
-                                '/' * volume_width, '-' *
-                                missing_volume_width))
+print('Vol ({}): {}%  [{}{}]'.format('$muted',
+                                     int(volume * 10),
+                                     '/' * volume_width, '-' *
+                                     missing_volume_width))
 "

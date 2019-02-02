@@ -24,15 +24,8 @@ Config {
     allDesktops = True,
     persistent = True,
     commands = [
-        -- weather monitor
-          Run Weather "KPAO"    [ "-t",  "<tempF>F <skyCondition>"
-                                , "-L",  "64","-H","77"
-                                , "-n",  "#CEFFAC"
-                                , "-h",  "#FFB6B0"
-                                , "-l",  "#96CBFE"
-                                ] 36000
         -- cpu stats
-        , Run MultiCpu          [ "-t",  "Cpu: <total0> <total1> <total2> <total3>"
+          Run MultiCpu          [ "-t",  "Cpu: <total0> <total1> <total2> <total3>"
                                 , "-L",  "30"
                                 , "-H",  "60"
                                 , "-h",  "#FFB6B0"
@@ -97,5 +90,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%battery%   %multicpu%   %memory%   %swap% }{ Wifi: %wlp2s0wi% %wlp2s0%   Vol: <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
+    template = "%battery%   %multicpu%   %memory%   %swap%   }{ Wifi: %wlp2s0wi% %wlp2s0%   Vol: <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
 }
