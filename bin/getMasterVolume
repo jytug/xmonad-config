@@ -14,7 +14,7 @@ BAR_WIDTH = 10
 volume = $volume
 volume_width = min(int(volume), BAR_WIDTH)
 missing_volume_width = BAR_WIDTH - volume_width
-print('Vol ({}): {}%  [{}{}]'.format('$muted',
+print('({}) {}%  [{}{}]'.format('$muted',
                                      int(volume * 10),
                                      '/' * volume_width, '-' *
                                      missing_volume_width))

@@ -153,6 +153,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((0, xF86XK_KbdBrightnessDown),
     spawn "backlight down")
 
+  -- Screen brightness
+  , ((0, xF86XK_MonBrightnessUp),
+    spawn "brightness up")
+
+  , ((0, xF86XK_MonBrightnessDown),
+    spawn "brightness down")
+
   ]
   ++
 

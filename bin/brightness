@@ -1,0 +1,10 @@
+#!/bin/sh
+CONNSCREEN=$(xrandr -q | grep "\sconnected" | cut -d" " -f1 | head -1)
+CURRBRIGHT=$(xrandr --current --verbose | grep -m 1 'Brightness:' | cut -f2- -d:)
+if [ "$1" = "up" ] && [ $(echo "$CURRBRIGHT < 1" | bc) -eq 1 ] 
+then
+xrandr --output $CONNSCREEN --brightness $(echo "$CURRBRIGHT + 0.1" | bc)
+elif [ "$1" = "down" ] && [ $(echo "$CURRBRIGHT > 0" | bc) -eq 1 ] 
+then
+xrandr --output $CONNSCREEN --brightness $(echo "$CURRBRIGHT - 0.1" | bc)
+fi

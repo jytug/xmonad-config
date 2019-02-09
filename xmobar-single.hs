@@ -42,7 +42,7 @@ Config {
                                 , "-n",     "#FFFFCC"
                                 ] 10
         -- swap
-        , Run Swap                [ "-t",      "Swap: <usedratio>%"
+        , Run Swap              [ "-t",      "Swap: <usedratio>%"
                                 , "-H",      "1024"
                                 , "-L",      "512"
                                 , "-h",      "#FFB6B0"
@@ -58,8 +58,6 @@ Config {
                                 , "-l",      "#CEFFAC"
                                 , "-n",      "#FFFFCC"
                                 ] 10
-        -- date
-        , Run Date "%a %b %_d %l:%M" "date" 10
         -- volume
         , Run Com "getMasterVolume" [] "volumelevel" 10
         -- battery monitor
@@ -87,8 +85,9 @@ Config {
         , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
                              , ("us"         , "<fc=#8B0000>US</fc>")
                              ]
+        , Run StdinReader
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%battery%   %multicpu%   %memory%   %swap%   }{ Wifi: %wlp2s0wi% %wlp2s0%   Vol: <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
+    template = "%battery% %StdinReader%   %multicpu%   %memory%   %swap%   }{ Wifi: %wlp2s0wi% %wlp2s0%   Vol: <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc> %kbd%"
 }

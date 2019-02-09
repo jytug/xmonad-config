@@ -25,6 +25,7 @@ stalonetray -c ~/.xmonad/stalonetrayrc-single &
 # Start screensaver
 killall gnome-screensaver &
 xscreensaver -no-splash &
+caffeine &
 
 # Start sound server
 pulseaudio --start --log-target=syslog &
