@@ -45,6 +45,9 @@ myLauncher = "$(yeganesh -x -- -fn 'monospace-8' -nb '#000000' -nf '#FFFFFF' -sb
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar-single.hs"
 
+-- Command to launch your browser
+myBrowser = "firefox"
+
 
 ------------------------------------------------------------------------
 -- Workspaces
@@ -176,6 +179,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_p),
      spawn myLauncher)
 
+  -- Spawn the browser
+  , ((modMask, xK_f),
+     spawn myBrowser)
+
   -- Take a selective screenshot using the command specified by mySelectScreenshot.
   , ((modMask .|. shiftMask, xK_p),
      spawn mySelectScreenshot)
@@ -188,25 +195,23 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((0, xF86XK_AudioMute),
      spawn "amixer -q set Master toggle")
 
-  -- Decrease volume.
-  , ((0, xF86XK_AudioLowerVolume),
-     spawn "pactl set-sink-volume 0 -5%")
-
-  -- Increase volume.
-  , ((0, xF86XK_AudioRaiseVolume),
-     spawn "pactl set-sink-volume 0 +5%")
-
   -- Mute volume.
   , ((modMask .|. controlMask, xK_m),
      spawn "amixer -q set Master toggle")
 
   -- Decrease volume.
   , ((modMask .|. controlMask, xK_j),
-     spawn "amixer -q set Master 5%-")
+     spawn "pactl set-sink-volume 0 -5%")
 
   -- Increase volume.
+  , ((0, xF86XK_AudioLowerVolume),
+     spawn "pactl set-sink-volume 0 -5%")
+
+  , ((0, xF86XK_AudioRaiseVolume),
+     spawn "pactl set-sink-volume 0 +5%")
+
   , ((modMask .|. controlMask, xK_k),
-     spawn "amixer -q set Master 5%+")
+     spawn "pactl set-sink-volume 0 +5%")
 
   -- Audio previous.
   , ((0, 0x1008FF16),
